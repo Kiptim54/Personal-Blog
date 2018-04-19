@@ -16,7 +16,7 @@ def login():
             login_user(user, Login.remember.data)
             return redirect(request.args.get('next') or url_for('main.index'))
         flash('Invalid, Try again')
-    return render_template('auth/login.html', Login = Login, ttile=title)
+    return render_template('auth/login.html', Login = Login, title=title)
 
 
 @auth.route('/register', methods=['GET', 'POST'])

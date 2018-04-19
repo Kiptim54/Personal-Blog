@@ -2,6 +2,12 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block content %}
-
-{{wtf.quick_form(Login)}}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4 col-xs-offset-4">
+            {{wtf.quick_form(Login)}}
+            <p> <a href="{{url_for('auth.register')}}">Sign up here</a></p>
+        </div>
+    </div>
+</div>
 {% endblock %}

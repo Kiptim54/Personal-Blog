@@ -30,6 +30,7 @@ class User(UserMixin,db.Model):
 
     posts = db.relationship('Post', backref='author', lazy='dynamic')
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
+    is_admin = db.Column(db.Boolean)
 
     def __repr__(self):
         return f'User{self.username}'

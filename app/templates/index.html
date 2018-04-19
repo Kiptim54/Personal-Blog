@@ -3,22 +3,20 @@
 
 
 {% block content %}
-{% import 'bootstrap/wtf.html' as wtf %}
+
 
 <div class="container">
         <div class="jumbotron jumbotron">
                 <div class="container">
                   <h3 class="display-4">Hey {{current_user.username}}!</h3>
-                <p>Start posting now! </p>
+                <button><a href="{{url_for('main.post')}}">Post article</a> </button>
                 </div>
               </div>
 </div>
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-        {{wtf.quick_form(Post)}}
-    </div>
-  </div>
-</div>
-
+{% for post in posts %}
+             <ul>
+               <li>{{post.post}}</li>
+             </ul>
+             
+             {% endfor %}
 {% endblock %}

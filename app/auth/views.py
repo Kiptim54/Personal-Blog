@@ -26,7 +26,7 @@ def register():
     title= "Register Account"
     form = RegisterForm()
     if form.validate_on_submit():
-        user = User(username = form.username.data,email = form.email.data, password = form.password.data)
+        user = User(username = form.username.data,email = form.email.data, password = form.password.data, is_admin=False, role_id = 2)
         db.session.add(user)
         db.session.commit()
         return redirect(url_for('auth.login'))

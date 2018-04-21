@@ -1,6 +1,6 @@
 from . import db, admin
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import UserMixin
+from flask_login import UserMixin, current_user, login_manager
 from . import login_manager
 from datetime import datetime
 from flask_admin.contrib.sqla import ModelView
@@ -75,7 +75,12 @@ class Comment(UserMixin, db.Model):
     def __repr__(self):
         return f'Post{self.comment}'
 
+
+class MyModelView(ModelView):
+    def is_accessible(self):
+        return current_user.is_authenticated
+            
+
 admin.add_view(ModelView(User, db.session))
 admin.add_view(ModelView(Post, db.session))
 admin.add_view(ModelView(Comment, db.session))
-admin.add_view(ModelView(Role, db.session))

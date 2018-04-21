@@ -5,12 +5,14 @@
     <link rel="stylesheet" href="{{url_for('static',filename='CSS/login.css')}}">
 {% endblock %}
 {% block content %}
-<div class="container">
+<div class="image">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-xs-4 col-xs-offset-4" id="form">
+        <div class="col-xs-4 col-centered" id="form">
             {{wtf.quick_form(Login)}}
             <p> <a href="{{url_for('auth.register')}}">Sign up</a></p>
         </div>
     </div>
+</div>
 </div>
 {% endblock %}

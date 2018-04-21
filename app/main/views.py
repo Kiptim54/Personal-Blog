@@ -6,6 +6,9 @@ from app.models import Post, User, Role,Comment
 from .. import db
 from datetime import datetime
 
+from flask_admin.contrib.sqla import ModelView
+
+
 @main.route('/',methods=['POST','GET'])
 def index():
     title= "Personal Blog | Home "
@@ -67,7 +70,8 @@ def fullpost(id):
 
     return render_template('fullpost.html', title=title, post=post, comment=Comments, allcomments=allcomments ,postcomments=postcomments)
 
-
-
+class MyModelView(ModelView):
+    def is_accessible(self):
+        return current_user.is_authenticated
 
 

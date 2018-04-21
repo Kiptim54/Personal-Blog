@@ -24,13 +24,28 @@ button{
 a{
     color:black;
 }
-span{
-    width:50px;
+.article{
+    width:100%;
+    text-align:center;
+    
+    
    
 
 }
-.article{
-    text-align:center;
-    border:3px black solid;
-    background:yellow;
+.wrap{
+    border:0.5px black solid;
+    margin:3%;
+    padding:2%;
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.75), 0 6px 10px rgba(0,0,0,0.75);
+    border-radius: 2%;
+    
+    
+}
+
+.posts{
+    background-image: url('https://images.pexels.com/photos/305821/pexels-photo-305821.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    background-size:cover;
+    background-repeat: no-repeat;
+    height:100vh;
+    margin-bottom:-5%;
 }

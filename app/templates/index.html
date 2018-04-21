@@ -24,22 +24,23 @@
     
      
 
-          <div class="container">
-            <div class="row">
+          <div class="container-fluid">
+            <div class="row posts">
                 {% for post in posts %}
-                <span class="article">
+                <div class="article">
                 <div class="col-md-6">
                     
-                    
+                    <div class="wrap">
                        <h4><a href="{{url_for('main.fullpost',id=post.id)}}">{{post.title}}</a></h4><br><i><sub>{{post.timeposted}}</sub></i><br>
                        {{post.post | truncate(250)}}
                      <br>
                    <button><a href="{{url_for('main.fullpost',id=post.id)}}">Read article</a></button>
+                  </div>
                   
                      
                
               </div>
-            </span>
+            </div>
               {% endfor %}
 
             </div>

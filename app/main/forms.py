@@ -5,5 +5,10 @@ from wtforms import ValidationError
 from app.models import Post
 
 class PostForm(FlaskForm):
-    Entry= TextAreaField('Post an article', validators=[DataRequired(), Length(min=1, max=140)])
+    title = StringField('Title', validators=[DataRequired(),Length(min=1, max=1000)])
+    Entry= TextAreaField('Post an article', validators=[DataRequired(), Length(min=1, max=100000000000)])
     submit = SubmitField('Submit')
+
+class CommentForm(FlaskForm):
+    comment = TextAreaField('Post Comment', [DataRequired(), Length(min=1)])
+    submit = SubmitField('Submit Comment')

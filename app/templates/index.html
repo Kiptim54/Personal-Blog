@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 
-
-
 {% block content %}
 
 
@@ -9,14 +7,20 @@
         <div class="jumbotron jumbotron">
                 <div class="container">
                   <h3 class="display-4">Hey {{current_user.username}}!</h3>
+                  {% if current_user.is_admin %}
                   <p>Welcome to Journal! Start posting your articles.</p> 
                 <button><a href="{{url_for('main.post')}}">Post article</a> </button>
-                </div>
+                {% else %}
+                <p>Welcome! Read and share articles!</p>
+                {% endif %}
               </div>
+            </div>
 </div>
 {% for post in posts %}
              <ul>
-               <li>{{post.post}}</li>
+               <li> <a href="{{url_for('main.fullpost',id=post.id)}}">{{post.title}}</a><br>{{post.post | truncate(50)}}
+              <br>{{post.timeposted}}
+            <a href="{{url_for('main.fullpost',id=post.id)}}">Read article</a></li>
              </ul>
              
              {% endfor %}

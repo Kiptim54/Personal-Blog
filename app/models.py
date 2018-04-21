@@ -1,7 +1,13 @@
-from . import db
+from . import db, admin
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from . import login_manager
+from datetime import datetime
+from flask_admin.contrib.sqla import ModelView
+
+
+
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -13,10 +19,10 @@ class User(UserMixin,db.Model):
     '''
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(225))
-    username = db.Column(db.String(225), unique=True, index=True)
-    email = db.Column(db.String(225), unique=True, index=True)
-    pass_secure = db.Column(db.String(225))
+    name = db.Column(db.String)
+    username = db.Column(db.String, unique=True, index=True)
+    email = db.Column(db.String, unique=True, index=True)
+    pass_secure = db.Column(db.String)
 
     @property
     def password(self):
@@ -31,6 +37,8 @@ class User(UserMixin,db.Model):
     posts = db.relationship('Post', backref='author', lazy='dynamic')
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     is_admin = db.Column(db.Boolean)
+    comment_id = db.Column(db.Integer, db.ForeignKey('comments.id'))
+    
 
     def __repr__(self):
         return f'User{self.username}'
@@ -39,8 +47,11 @@ class User(UserMixin,db.Model):
 class Post(UserMixin, db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
-    post = db.Column(db.String(255))
+    title = db.Column(db.String)
+    post = db.Column(db.String)
+    timeposted = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    comments = db.relationship('Comment', backref='post', lazy='dynamic')
 
     def __repr__(self):
         return f'Post{self.post}'
@@ -48,8 +59,23 @@ class Post(UserMixin, db.Model):
 class Role(UserMixin, db.Model):
     __tablename__ = "roles"
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(220))
+    name = db.Column(db.String)
     users = db.relationship('User', backref='role', lazy='dynamic')
 
     def __repr__(self):
-        return f'Post{self.role}'
+        return f'Post{self.name}'
+
+class Comment(UserMixin, db.Model):
+    __tablename__ = "comments"
+    id=db.Column(db.Integer, primary_key=True)
+    comment = db.Column(db.String)
+    users = db.relationship('User', backref='author', lazy='dynamic')
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
+    
+    def __repr__(self):
+        return f'Post{self.comment}'
+
+admin.add_view(ModelView(User, db.session))
+admin.add_view(ModelView(Post, db.session))
+admin.add_view(ModelView(Comment, db.session))
+admin.add_view(ModelView(Role, db.session))

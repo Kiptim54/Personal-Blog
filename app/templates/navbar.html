@@ -14,7 +14,7 @@
         <ul class="nav navbar-nav">
           <li><a href="{{url_for('main.index')}}">Home</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="{{url_for('main.profile')}}">Admin</a></li>
+          <li><a href="{{url_for('main.profile', username = current_user.username)}}">Admin</a></li>
           {% if current_user.is_authenticated %}
           <li><a href="{{url_for('auth.logout')}}">Logout</a></li>
           {% else %}
@@ -41,7 +41,9 @@
         <ul class="nav navbar-nav">
           <li><a href="{{url_for('main.index')}}">Home</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="{{url_for('main.profile')}}">User</a></li>
+          {% if current_user.is_authenticated %}
+          <li><a href="{{url_for('main.profile', username = current_user.username)}}">User</a></li>
+          {% endif %}
           {% if current_user.is_authenticated %}
           <li><a href="{{url_for('auth.logout')}}">Logout</a></li>
           {% else %}

@@ -1,8 +1,8 @@
 from . import main
-from flask import render_template, url_for , redirect
+from flask import render_template, url_for , redirect, flash
 from flask_login import current_user, login_required
-from .forms import PostForm, CommentForm
-from app.models import Post, User, Role,Comment
+from .forms import PostForm, CommentForm, SubscribersForm
+from app.models import Post, User, Role,Comment, Subscribers
 from .. import db
 from datetime import datetime
 
@@ -15,7 +15,16 @@ def index():
     all = Post.query.all()
     all.reverse()
   
-    return render_template('index.html', title = title, posts=all)
+    subscribers = SubscribersForm()
+    if subscribers.validate_on_submit():
+        subscriber = Subscribers(email = subscribers.email.data)
+        db.session.add(subscriber)
+        db.session.commit()
+        print(subscriber)
+        return redirect(url_for('main.index'))
+        flash('You are now subscribed!')
+
+    return render_template('index.html', title = title, posts=all, subscribers=subscribers)
     
 
 @main.route('/profile/<username>')

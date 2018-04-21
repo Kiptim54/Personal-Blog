@@ -75,6 +75,13 @@ class Comment(UserMixin, db.Model):
     def __repr__(self):
         return f'Post{self.comment}'
 
+class Subscribers(UserMixin, db.Model):
+    __tablename__ = "subscribers"
+    id= db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String, unique=True)
+
+    def __repr__(self):
+        return f'Subscribers{self.email}'
 
 class MyModelView(ModelView):
     def is_accessible(self):
@@ -84,3 +91,4 @@ class MyModelView(ModelView):
 admin.add_view(ModelView(User, db.session))
 admin.add_view(ModelView(Post, db.session))
 admin.add_view(ModelView(Comment, db.session))
+admin.add_view(ModelView(Subscribers, db.session))

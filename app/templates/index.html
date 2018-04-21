@@ -9,10 +9,10 @@
 <div class="header">
     <div class="container">
       <div class="intro">
-        <h1 class="display-4">Hey {{current_user.username}}!</h1>
+        <h1 class="display-4">Hey{{current_user.username}}!</h1>
         {% if current_user.is_admin %}
-        <p>Welcome to Journal! Start posting your articles.</p> 
-      <button><a href="{{url_for('main.post')}}">Post article</a> </button>
+        <p>Welcome to Journal! Start posting your articles now!.</p> 
+      <!-- <button><a href="{{url_for('main.post')}}">Post article</a> </button> -->
       {% else %}
       <p>Welcome! Read and share articles!</p>
       {% endif %}

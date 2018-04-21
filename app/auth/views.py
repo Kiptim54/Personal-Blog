@@ -5,6 +5,7 @@ from ..models import User
 from flask_login import login_user, logout_user, current_user
 from .. import db
 from flask_login import UserMixin
+from .email import mail_message
 
 @auth.route('/login',methods=['GET', 'POST'])
 def login():

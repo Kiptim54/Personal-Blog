@@ -20,7 +20,19 @@ class TestConfig(Config):
 
 
 class ProdConfig(Config):
-    pass
+    SQLALCHEMY_DATABASE_URI = os.environ.get('postgresql+psycopg2://kiptim:jerotich@localhost/blog')
+    SECRET_KEY = 'kenani'
+    # WTF_CSRF_SECRET_KEY="a csrf secret key"
+    #  email configurations
+    MAIL_SERVER = 'smtp.googlemail.com'
+    MAIL_PORT = 587
+    MAIL_USE_TLS = True
+    MAIL_USERNAME = os.environ.get("kiptim54@gmail.com")
+    MAIL_PASSWORD = os.environ.get("jerotich")
+    UPLOADED_PHOTOS_DEST ='app/static/photos'
+     # simple mde  configurations
+    SIMPLEMDE_JS_IIFE = True
+    SIMPLEMDE_USE_CDN = True
 
 class DevConfig(Config):
     DEBUG = True

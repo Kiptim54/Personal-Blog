@@ -49,6 +49,8 @@ class Post(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String)
     post = db.Column(db.String)
+    image_name = db.Column(db.String)
+    image_url = db.Column(db.String)
     timeposted = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     comments = db.relationship('Comment', backref='post', lazy='dynamic')

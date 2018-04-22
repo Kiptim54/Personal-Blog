@@ -15,12 +15,15 @@ class Config:
      # simple mde  configurations
     SIMPLEMDE_JS_IIFE = True
     SIMPLEMDE_USE_CDN = True
-class TestConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://kiptim:jerotich@localhost/blog_test'
 
 
 class ProdConfig(Config):
-    SQLALCHEMY_DATABASE_URI = os.environ.get('postgresql+psycopg2://kiptim:jerotich@localhost/blog')
+    pass
+
+class DevConfig(Config):
+    DEBUG = True
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://kiptim:jerotich@localhost/blog'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY = 'kenani'
     # WTF_CSRF_SECRET_KEY="a csrf secret key"
     #  email configurations
@@ -34,8 +37,5 @@ class ProdConfig(Config):
     SIMPLEMDE_JS_IIFE = True
     SIMPLEMDE_USE_CDN = True
 
-class DevConfig(Config):
-    DEBUG = True
-    
 config_options ={"production":ProdConfig,"default":DevConfig}
 

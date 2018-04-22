@@ -6,7 +6,7 @@ from app.models import Post, Comment, Subscribers
 from flask_wtf.file import FileRequired, file_allowed, FileField
 
 class PostForm(FlaskForm):
-    image = FileField("Image", validators=[FileRequired(), file_allowed(images)])
+    # image = FileField("Image", validators=[FileRequired()])
     title = StringField('Title', validators=[DataRequired(),Length(min=1, max=1000)])
     Entry= TextAreaField('Post an article', validators=[DataRequired(), Length(min=1, max=100000000000)])
     submit = SubmitField('Submit')

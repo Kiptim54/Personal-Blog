@@ -1,5 +1,6 @@
 import unittest
-from app.models import User
+from app.models import User, Post, Comment, Subscribers
+from app import db
 
 class UserModelTest(unittest.TestCase):
     def setUp(self):
@@ -24,3 +25,4 @@ class UserModelTest(unittest.TestCase):
         test to ensure password_hash_checker works
         '''
         self.assertTrue(self.new_user.verify_password('koko'))
+# class Test

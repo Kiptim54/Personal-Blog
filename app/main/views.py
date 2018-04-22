@@ -7,6 +7,7 @@ from .. import db
 from datetime import datetime
 
 from flask_admin.contrib.sqla import ModelView
+import markdown2  
 
 
 @main.route('/',methods=['POST','GET'])
@@ -46,6 +47,7 @@ def post():
         db.session.commit()
         return redirect(url_for('main.post'))
     
+    
     all = Post.query.all()
     all.reverse()
     print(all)
@@ -58,6 +60,7 @@ def post():
         print(comment)
         return redirect(url_for('main.post'))
     allcomments = Comment.query.all()
+    # format_post = markdown2.markdown(post.post,extras=["code-friendly", "fenced-code-blocks"])
     
         
     return render_template('post.html', Post=Blog, title=title, posts=all, comment=Comments, allcomments=allcomments)

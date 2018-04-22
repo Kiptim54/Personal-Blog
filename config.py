@@ -12,6 +12,11 @@ class Config:
     MAIL_USERNAME = os.environ.get("Brenda Kiptim")
     MAIL_PASSWORD = os.environ.get("jerotich")
     UPLOADED_PHOTOS_DEST ='app/static/photos'
+     # simple mde  configurations
+    SIMPLEMDE_JS_IIFE = True
+    SIMPLEMDE_USE_CDN = True
+class TestConfig(Config):
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://kiptim:jerotich@localhost/blog_test'
 
 
 class ProdConfig(Config):

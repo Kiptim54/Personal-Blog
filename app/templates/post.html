@@ -8,6 +8,7 @@
              
                 {% import 'bootstrap/wtf.html' as wtf %}
               {{wtf.quick_form(Post)}}
+              <!-- {{simplemde.load}} -->
              <button><a href="{{url_for('main.index')}}">See all articles</a></button>
             
              {% endblock %}

@@ -4,9 +4,8 @@ class Config:
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://kiptim:jerotich@localhost/blog'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY = 'kenani'
-    # WTF_CSRF_SECRET_KEY="a csrf secret key"
     #  email configurations
-    MAIL_SERVER = 'smtp.googlemail.com'
+    MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get("kiptim54@gmail.com")

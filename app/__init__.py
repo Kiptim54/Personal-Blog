@@ -14,7 +14,6 @@ login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
 
 db = SQLAlchemy()
-db.create_all()
 bootstrap = Bootstrap()
 admin = Admin()
 mail = Mail()

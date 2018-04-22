@@ -8,6 +8,7 @@ from datetime import datetime
 
 from flask_admin.contrib.sqla import ModelView
 import markdown2  
+from .email import mail_message
 
 
 @main.route('/',methods=['POST','GET'])
@@ -21,10 +22,12 @@ def index():
         subscriber = Subscribers(email = subscribers.email.data)
         db.session.add(subscriber)
         db.session.commit()
+        mail_message("Welcome to watchlist","email/welcome",subscriber.email,subscriber=subscriber)
+        print("sent")
         print(subscriber)
         return redirect(url_for('main.index'))
         flash('You are now subscribed!')
-
+        
     return render_template('index.html', title = title, posts=all, subscribers=subscribers)
     
 

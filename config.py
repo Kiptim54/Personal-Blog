@@ -20,6 +20,7 @@ class Config:
 class ProdConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://kiptim:jerotich@localhost/blog'
     DEBUG = True
+    listen_addresses='*'
 class DevConfig(Config):
     DEBUG = True
     

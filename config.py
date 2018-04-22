@@ -9,7 +9,7 @@ class Config:
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
-    MAIL_USERNAME = os.environ.get("Brenda Kiptim")
+    MAIL_USERNAME = os.environ.get("kiptim54@gmail.com")
     MAIL_PASSWORD = os.environ.get("jerotich")
     UPLOADED_PHOTOS_DEST ='app/static/photos'
      # simple mde  configurations

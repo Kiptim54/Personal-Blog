@@ -3,7 +3,7 @@ import os
 class Config:
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://kiptim:jerotich@localhost/blog'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SECRET_KEY = '<Flask WTF Secret Key>'
+    SECRET_KEY = 'kenani'
     # WTF_CSRF_SECRET_KEY="a csrf secret key"
     #  email configurations
     MAIL_SERVER = 'smtp.googlemail.com'

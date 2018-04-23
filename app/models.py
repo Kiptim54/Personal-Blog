@@ -4,6 +4,7 @@ from flask_login import UserMixin, current_user, login_manager
 from . import login_manager
 from datetime import datetime
 from flask_admin.contrib.sqla import ModelView
+from flask_login import current_user
 
 
 
@@ -86,7 +87,8 @@ class Subscribers(UserMixin, db.Model):
 
 class MyModelView(ModelView):
     def is_accessible(self):
-        return current_user.is_authenticated
+        return False
+
             
 
 admin.add_view(ModelView(User, db.session))

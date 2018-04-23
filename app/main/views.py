@@ -3,8 +3,10 @@ from flask import render_template, url_for , redirect, flash
 from flask_login import current_user, login_required
 from .forms import PostForm, CommentForm, SubscribersForm
 from app.models import Post, User, Role,Comment, Subscribers
-from .. import db
+from .. import db, basic_auth
 from datetime import datetime
+
+
 
 from flask_admin.contrib.sqla import ModelView
 import markdown2  
@@ -22,11 +24,13 @@ def index():
         subscriber = Subscribers(email = subscribers.email.data)
         db.session.add(subscriber)
         db.session.commit()
+        flash('You are now subscribed!')
         mail_message("Welcome to Journal","email/welcome",subscriber.email,subscriber=subscriber)
         print("sent")
         print(subscriber)
+        
         return redirect(url_for('main.index'))
-        flash('You are now subscribed!')
+        
         
     return render_template('index.html', title = title, posts=all, subscribers=subscribers)
     
@@ -69,7 +73,9 @@ def post():
     return render_template('post.html', Post=Blog, title=title, posts=all, comment=Comments, allcomments=allcomments)
 
 @main.route('/post/<id>', methods=['POST','GET'])
+@basic_auth.required
 def fullpost(id):
+    
     title= f'Posts' 
     post = Post.query.filter_by(id=id).first()
     Comments = CommentForm()
@@ -85,8 +91,9 @@ def fullpost(id):
 
     return render_template('fullpost.html', title=title, post=post, comment=Comments, allcomments=allcomments ,postcomments=postcomments)
 
-class MyModelView(ModelView):
-    def is_accessible(self):
-        return current_user.is_authenticated
+# @main.route('/admin')
+# @basic_auth.required
+# def admin():
 
 
+#     return render_template('admin.html')

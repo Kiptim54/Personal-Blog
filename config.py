@@ -1,5 +1,5 @@
 import os 
-import psycopg2
+
 
 
 class Config:
@@ -20,7 +20,8 @@ class Config:
      # simple mde  configurations
     SIMPLEMDE_JS_IIFE = True
     SIMPLEMDE_USE_CDN = True
-
+    BASIC_AUTH_USERNAME = 'brenda'
+    BASIC_AUTH_pASSWORD = "jerotich"
 
 class ProdConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')

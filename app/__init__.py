@@ -7,7 +7,7 @@ from flask_admin import Admin
 from flask_mail import Mail
 from flask_uploads import UploadSet,configure_uploads,IMAGES
 from flask_simplemde import SimpleMDE
-
+from flask_basicauth import BasicAuth
 
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
@@ -19,6 +19,7 @@ admin = Admin()
 mail = Mail()
 photos = UploadSet('photos',IMAGES)
 simple = SimpleMDE()
+basic_auth= BasicAuth()
 
 
 
@@ -35,6 +36,7 @@ def create_app(config_state):
     admin.init_app(app)
     mail.init_app(app)
     simple.init_app(app)
+    basic_auth.init_app(app)
       # configure UploadSet
     configure_uploads(app,photos)
 

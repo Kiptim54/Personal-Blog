@@ -5,11 +5,15 @@
 ## SPECS
 
 The blog allows users:
+
     1. post comments
+
     2. subscribe to a mail list
 
 The blog allows admin:
+
     1. auth to delete comments and users
+
     2. auth to post articles
 
 ## Progress
@@ -29,7 +33,7 @@ The blog allows admin:
 
 
 ## Deployment
-View the live site [here] (https://kiptimblog.herokuapp.com/)
+View the live site [here](https://kiptimblog.herokuapp.com/)
 
 ## Built With
 

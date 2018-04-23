@@ -55,15 +55,15 @@ def post():
     all.reverse()
     print(all)
 
-    # Comments = CommentForm()
-    # if Comments.validate_on_submit():
-    #     comment = Comment(comment = Comments.comment.data)
-    #     db.session.add(comment)
-    #     db.session.commit()
-    #     print(comment)
-    #     return redirect(url_for('main.post'))
-    # allcomments = Comment.query.all()
-    # # format_post = markdown2.markdown(post.post,extras=["code-friendly", "fenced-code-blocks"])
+    Comments = CommentForm()
+    if Comments.validate_on_submit():
+        comment = Comment(comment = Comments.comment.data)
+        db.session.add(comment)
+        db.session.commit()
+        print(comment)
+        return redirect(url_for('main.post'))
+    allcomments = Comment.query.all()
+    # format_post = markdown2.markdown(post.post,extras=["code-friendly", "fenced-code-blocks"])
     
         
     return render_template('post.html', Post=Blog, title=title, posts=all, comment=Comments, allcomments=allcomments)

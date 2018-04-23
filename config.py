@@ -10,6 +10,7 @@ class Config:
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get("kiptim54@gmail.com")
     MAIL_PASSWORD = os.environ.get("jerotich")
+    SENDER_EMAIL = 'kiptim54@gmail.com'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
      # simple mde  configurations
     SIMPLEMDE_JS_IIFE = True
@@ -17,7 +18,7 @@ class Config:
 
 
 class ProdConfig(Config):
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://kiptim:jerotich@localhost/blog'
     DEBUG = True
 class DevConfig(Config):
     DEBUG = True

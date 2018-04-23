@@ -5,25 +5,31 @@
 ## SPECS
 
 The blog allows users:
-    * post comments
-    * subscribe to a mail list
+    1. post comments
+    2. subscribe to a mail list
 
 The blog allows admin:
-    * auth to delete comments and users
-    * auth to post articles
+    1. auth to delete comments and users
+    2. auth to post articles
 
 ## Progress
 [x] post article
+
 [x] authentication
+
 [x] delete article
+
 [x] send subscription
+
 [ ] Tests
+
 [ ] hide Admin page from non-admin
+
 [ ] upload image and use Markddown editor
 
 
 ## Deployment
-View the live site here https://kiptimblog.herokuapp.com/
+View the live site [here] (https://kiptimblog.herokuapp.com/)
 
 ## Built With
 

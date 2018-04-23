@@ -75,7 +75,6 @@ def post():
     return render_template('post.html', Post=Blog, title=title, posts=all, comment=Comments, allcomments=allcomments)
 
 @main.route('/post/<id>', methods=['POST','GET'])
-@basic_auth.required
 def fullpost(id):
     
     title= f'Posts' 

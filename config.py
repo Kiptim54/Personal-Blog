@@ -5,11 +5,11 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY = 'kenani'
     #  email configurations
-    MAIL_SERVER = 'smtp.gmail.com'
+    MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
-    MAIL_USERNAME = os.environ.get("kiptim54@gmail.com")
-    MAIL_PASSWORD = os.environ.get("jerotich")
+    MAIL_USERNAME = os.environ.get('kiptim54@gmail.com')
+    MAIL_PASSWORD = os.environ.get('jerotich')
     SENDER_EMAIL = 'kiptim54@gmail.com'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
      # simple mde  configurations
@@ -18,7 +18,7 @@ class Config:
 
 
 class ProdConfig(Config):
-    SQLALCHEMY_DATABASE_URI = ("postgresql://localhost:5432")
+    SQLALCHEMY_DATABASE_URI =  'postgresql+psycopg2://kiptim:jerotich@localhost/blog'
     DEBUG = True
 class DevConfig(Config):
     DEBUG = True

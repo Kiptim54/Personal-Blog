@@ -22,7 +22,7 @@ def index():
         subscriber = Subscribers(email = subscribers.email.data)
         db.session.add(subscriber)
         db.session.commit()
-        mail_message("Welcome to watchlist","email/welcome",subscriber.email,subscriber=subscriber)
+        # mail_message("Welcome to watchlist","email/welcome",subscriber.email,subscriber=subscriber)
         print("sent")
         print(subscriber)
         return redirect(url_for('main.index'))

@@ -23,7 +23,7 @@
             <h3>Comments</h3>
             {% for comment in postcomments %}
             
-            <p>{{comment.comment}}</p> {% if current_user.is_admin %}<button> Delete</button>{% endif %}<br>
+            <p>{{comment.comment}}</p>
 
            
             {% endfor %}

@@ -35,7 +35,6 @@ class User(UserMixin,db.Model):
         return check_password_hash(self.pass_secure, password)
 
     posts = db.relationship('Post', backref='author', lazy='dynamic')
-    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     is_admin = db.Column(db.Boolean)
     comment_id = db.Column(db.Integer, db.ForeignKey('comments.id'))
     
@@ -62,7 +61,7 @@ class Role(UserMixin, db.Model):
     __tablename__ = "roles"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
-    users = db.relationship('User', backref='role', lazy='dynamic')
+    
 
     def __repr__(self):
         return f'Post{self.name}'

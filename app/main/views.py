@@ -20,15 +20,17 @@ def index():
     all.reverse()
   
     subscribers = SubscribersForm()
-    if subscribers.validate_on_submit():
-        subscriber = Subscribers(email = subscribers.email.data)
-        db.session.add(subscriber)
-        db.session.commit()
-        flash('You are now subscribed!')
-        mail_message("Welcome to Journal","email/welcome",subscriber.email,subscriber=subscriber)
-        print("sent")
-        print(subscriber)
-        
+    try:
+        if subscribers.validate_on_submit():
+            subscriber = Subscribers(email = subscribers.email.data)
+            db.session.add(subscriber)
+            db.session.commit()
+            flash('You are now subscribed!')
+            mail_message("Welcome to Journal","email/welcome",subscriber.email,subscriber=subscriber)
+            print("sent")
+            print(subscriber)
+            return redirect(url_for('main.index'))
+    except:
         return redirect(url_for('main.index'))
         
         

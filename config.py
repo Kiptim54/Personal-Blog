@@ -25,7 +25,8 @@ class Config:
 
 class ProdConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
-    # connection = psycopg2.connect(database="gps_heatmap", user="postgres", password="1234", host="localhost", port=5433)
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://kiptim:jerotich@localhost/blog'
+    
     DEBUG = True
 
 class DevConfig(Config):

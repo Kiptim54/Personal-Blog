@@ -13,7 +13,7 @@ class Config:
     MAIL_USERNAME = 'kiptim54@gmail.com'
     MAIL_PASSWORD = 'jerotich'
     SENDER_EMAIL = 'kiptim54@gmail.com'
-    UPLOADED_PHOTOS_DEST ='app/static/photos'
+    UPLOADED_PHOTOS_DEST ='app/static/photos'   
      # simple mde  configurations
     SIMPLEMDE_JS_IIFE = True
     SIMPLEMDE_USE_CDN = True

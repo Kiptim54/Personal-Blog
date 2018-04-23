@@ -2,4 +2,5 @@
 virtual/
 *.pyc
 start.sh
-
+config.py
+forms.py

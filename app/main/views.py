@@ -47,20 +47,6 @@ def profile(username):
 
 @main.route('/post', methods=['GET', 'POST'])
 def post():
-    title = "Post Article"
-    Blog = PostForm()
-    try:
-        if Blog.validate_on_submit():
-            post = Post( title = Blog.title.data ,post = Blog.Entry.data, author=current_user, timeposted =datetime.utcnow() )
-            db.session.add(post)
-            db.session.commit()
-            return redirect(url_for('main.post'))
-    except:
-        flash("We currently cannot post more than 300 charachters. We are working on this sorry for the inconvinience")
-        return redirect(url_for("main.post"))
-        
-    
-    
     all = Post.query.all()
     all.reverse()
     print(all)
@@ -74,6 +60,20 @@ def post():
         return redirect(url_for('main.post'))
     allcomments = Comment.query.all()
     # format_post = markdown2.markdown(post.post,extras=["code-friendly", "fenced-code-blocks"])
+    title = "Post Article"
+    Blog = PostForm()
+    try:
+       
+        if Blog.validate_on_submit():
+            post = Post( title = Blog.title.data ,post = Blog.Entry.data, author=current_user, timeposted =datetime.utcnow() )
+            db.session.add(post)
+            db.session.commit()
+            return redirect(url_for('main.post'))
+    except:
+        flash("Sorry you can only post 225 characters for now. We are currently working on this.")
+        return redirect(url_for('main.post'))
+        
+
     
         
     return render_template('post.html', Post=Blog, title=title, posts=all, comment=Comments, allcomments=allcomments)

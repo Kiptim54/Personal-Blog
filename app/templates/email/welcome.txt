@@ -1,3 +1,5 @@
 Hello {{subscriber.email}}
-Welcome to Watchlist
-We have just seen you have signed up for our application and want to welcome you to the family. Please enjoy the reviews of all your  favourite films.
+Welcome to Journals. You will be informed when a new article is posted. Thank you for subscribing
+
+Regards,
+Brenda Kiptim

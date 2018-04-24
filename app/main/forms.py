@@ -15,6 +15,10 @@ class CommentForm(FlaskForm):
     comment = TextAreaField('Post Comment', [DataRequired(), Length(min=1)])
     submit = SubmitField('Submit Comment')
 
+def validate_subscriber(form, data_field):
+    if Subscribers.query.filter_by(email= data_field.data).first():
+        raise ValidationError('You are already subscribed')
+
 class SubscribersForm(FlaskForm):
-    email = StringField('Subscribe to get alerts', validators=[DataRequired(), Email(), Length(min=1, max=200)])
+    email = StringField('Subscribe to get alerts', validators=[DataRequired(), Email(), Length(min=1, max=200), validate_subscriber])
     submit = SubmitField("Submit")

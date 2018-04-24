@@ -28,7 +28,6 @@ def index():
             flash('You are now subscribed!')
             mail_message("Welcome to Journal","email/welcome",subscriber.email,subscriber=subscriber)
             print("sent")
-            print(subscriber)
             return redirect(url_for('main.index'))
     except:
         return redirect(url_for('main.index'))
@@ -50,11 +49,16 @@ def profile(username):
 def post():
     title = "Post Article"
     Blog = PostForm()
-    if Blog.validate_on_submit():
-        post = Post( title = Blog.title.data ,post = Blog.Entry.data, author=current_user, timeposted =datetime.utcnow() )
-        db.session.add(post)
-        db.session.commit()
-        return redirect(url_for('main.post'))
+    try:
+        if Blog.validate_on_submit():
+            post = Post( title = Blog.title.data ,post = Blog.Entry.data, author=current_user, timeposted =datetime.utcnow() )
+            db.session.add(post)
+            db.session.commit()
+            return redirect(url_for('main.post'))
+    except:
+        flash("We currently cannot post more than 300 charachters. We are working on this sorry for the inconvinience")
+        return redirect(url_for("main.post"))
+        
     
     
     all = Post.query.all()

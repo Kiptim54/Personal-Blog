@@ -13,6 +13,7 @@ class PostForm(FlaskForm):
 
 class CommentForm(FlaskForm):
     comment = TextAreaField('Post Comment', [DataRequired(), Length(min=1)])
+    commenter = StringField("Name" ,validators=[DataRequired()] )
     submit = SubmitField('Submit Comment')
 
 def validate_subscriber(form, data_field):

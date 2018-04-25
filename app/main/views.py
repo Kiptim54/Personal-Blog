@@ -53,7 +53,7 @@ def post():
 
     Comments = CommentForm()
     if Comments.validate_on_submit():
-        comment = Comment(comment = Comments.comment.data)
+        comment = Comment(comment = Comments.comment.data, commenter = Comments.commenter.data)
         db.session.add(comment)
         db.session.commit()
         print(comment)
@@ -85,7 +85,7 @@ def fullpost(id):
     post = Post.query.filter_by(id=id).first()
     Comments = CommentForm()
     if Comments.validate_on_submit():
-        comment = Comment(comment = Comments.comment.data, post_id=id)
+        comment = Comment(comment = Comments.comment.data, post_id=id, commenter = Comments.commenter.data)
         db.session.add(comment)
         db.session.commit()
         print(comment)
